@@ -960,7 +960,7 @@ namespace TheOtherRoles.Patches {
                         msg = $"尸检报告: {Math.Round(timeSinceDeath / 1000)}秒前死亡!";
                     } else if (isDetectiveReport) {
                         if (timeSinceDeath < Detective.reportNameDuration * 1000) {
-                            msg =  $"尸检报告: 杀手似乎是{deadPlayer.killerIfExisting.Data.PlayerName}!";
+                            msg =  $"尸检报告: 凶手似乎是{deadPlayer.killerIfExisting.Data.PlayerName}!";
                         } else if (timeSinceDeath < Detective.reportColorDuration * 1000) {
                             var typeOfColor = Helpers.isLighterColor(deadPlayer.killerIfExisting.Data.DefaultOutfit.ColorId) ? "浅" : "深";
                             msg =  $"尸检报告: 凶手似乎是{typeOfColor}色!";

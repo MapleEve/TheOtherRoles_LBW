@@ -68,18 +68,18 @@ namespace TheOtherRoles.Patches {
                             continue;
                         else if (!playerVersions.ContainsKey(client.Id))  {
                             blockStart = true;
-                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的MOD版本错误\n</color>";
+                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的模组版本错误\n</color>";
                         } else {
                             PlayerVersion PV = playerVersions[client.Id];
                             int diff = TheOtherRolesPlugin.Version.CompareTo(PV.version);
                             if (diff > 0) {
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的MOD版本太老了 (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的模组版本太旧了 (v{playerVersions[client.Id].version.ToString()})\n</color>";
                                 blockStart = true;
                             } else if (diff < 0) {
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的MOD版本太新了 (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}的模组版本太新了 (v{playerVersions[client.Id].version.ToString()})\n</color>";
                                 blockStart = true;
                             } else if (!PV.GuidMatches()) { // version presumably matches, check if Guid matches
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}使用了改版的MOD v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName}使用了改版的模组 v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
                                 blockStart = true;
                             }
                         }
@@ -104,7 +104,7 @@ namespace TheOtherRoles.Patches {
                             SceneChanger.ChangeScene("MainMenu");
                         }
 
-                        __instance.GameStartText.text = $"<color=#FF0000FF>房主MOD版本错误\n你会在{Math.Round(10 - kickingTimer)}秒后被踢出</color>";
+                        __instance.GameStartText.text = $"<color=#FF0000FF>主持人没有超多职业模组或版本不匹配\n你会在{Math.Round(10 - kickingTimer)}秒后被踢出</color>";
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition + Vector3.up * 2;
                     } else {
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition;
