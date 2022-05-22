@@ -152,7 +152,7 @@ namespace TheOtherRoles {
                 return;
             }
             if (GameObject.Find("ModifierSettings") != null) {
-                GameObject.Find("ModifierSettings").transform.FindChild("GameGroup").FindChild("Text").GetComponent<TMPro.TextMeshPro>().SetText("额外职业设置");
+                GameObject.Find("ModifierSettings").transform.FindChild("GameGroup").FindChild("Text").GetComponent<TMPro.TextMeshPro>().SetText("附加职业设置");
                 return;
             }
 
@@ -510,7 +510,7 @@ namespace TheOtherRoles {
                         var optionValue = (min == max) ? $"{max}" : $"{min} - {max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     } else if (option == CustomOptionHolder.modifiersCountMin) {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "额外职业");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "附加职业");
                         var min = CustomOptionHolder.modifiersCountMin.getSelection();
                         var max = CustomOptionHolder.modifiersCountMax.getSelection();
                         if (min > max) min = max;
@@ -529,7 +529,7 @@ namespace TheOtherRoles {
         private static void Postfix(ref string __result)
         {
             int counter = TheOtherRolesPlugin.optionsPage;
-            string hudString = counter != 0 ? Helpers.cs(DateTime.Now.Second % 2 == 0 ? Color.white : Color.red, "可以使用鼠标滚轮调整\n") : "";
+            string hudString = counter != 0 ? Helpers.cs(DateTime.Now.Second % 2 == 0 ? Color.white : Color.red, "用鼠标滚轮查看更多信息\n") : "";
 
             switch (counter) {
                 case 0:
@@ -539,7 +539,7 @@ namespace TheOtherRoles {
                     hudString += "第二页 : 超多职业模组设置 \n" + buildOptionsOfType(CustomOption.CustomOptionType.General, false);
                     break;
                 case 2:
-                    hudString += "第三页 : 角色与额外角色生成概率 \n" + buildRoleOptions();
+                    hudString += "第三页 : 职业分配概率 \n" + buildRoleOptions();
                     break;
                 case 3:
                     hudString += "第四页 : 内鬼角色设置 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false);
@@ -551,7 +551,7 @@ namespace TheOtherRoles {
                     hudString += "第六页 : 船员角色设置 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false);
                     break;
                 case 6:
-                    hudString += "第七页 : 额外职业设置 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Modifier, false);
+                    hudString += "第七页 : 附加职业设置 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Modifier, false);
                     break;
             }
 
@@ -646,7 +646,7 @@ namespace TheOtherRoles {
 
             var rows = __instance.GameSettings.text.Count(c => c == '\n');
             float LobbyTextRowHeight = 0.06F;
-            var maxY = Mathf.Max(MinY, rows * LobbyTextRowHeight + (rows - 2) * LobbyTextRowHeight);
+            var maxY = Mathf.Max(MinY, rows * LobbyTextRowHeight + (rows - 38) * LobbyTextRowHeight);
 
             Scroller.ContentYBounds = new FloatRange(MinY, maxY);
 
