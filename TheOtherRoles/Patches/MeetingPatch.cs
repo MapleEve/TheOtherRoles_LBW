@@ -428,7 +428,7 @@ namespace TheOtherRoles.Patches {
                 Transform infoTransform = __instance.playerStates[0].NameText.transform.parent.FindChild("Info");
                 TMPro.TextMeshPro meetingInfo = infoTransform != null ? infoTransform.GetComponent<TMPro.TextMeshPro>() : null;
                 swapperChargesText = UnityEngine.Object.Instantiate(__instance.playerStates[0].NameText, confirmSwapButtonParent);
-                swapperChargesText.text = $"剩余换票次数: {Swapper.charges}";
+                swapperChargesText.text = $"Swaps: {Swapper.charges}";
                 swapperChargesText.enableWordWrapping = false;
                 swapperChargesText.transform.localScale = Vector3.one * 1.7f;
                 swapperChargesText.transform.localPosition = new Vector3(-2.5f, 0f, 0f);

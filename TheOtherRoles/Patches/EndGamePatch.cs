@@ -275,7 +275,7 @@ namespace TheOtherRoles.Patches {
                 textRenderer.color = Jester.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.ArsonistWin) {
-                textRenderer.text = "让世界熊熊燃烧";
+                textRenderer.text = "烧吧！烧吧！";
                 textRenderer.color = Arsonist.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.VultureWin) {
@@ -287,7 +287,7 @@ namespace TheOtherRoles.Patches {
                 textRenderer.color = Lawyer.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.LoversTeamWin) {
-                textRenderer.text = "爱情助力船员胜利";
+                textRenderer.text = "恋人和船员胜利";
                 textRenderer.color = Lovers.color;
                 __instance.BackgroundBar.material.SetColor("_Color", Lovers.color);
             }
@@ -301,13 +301,13 @@ namespace TheOtherRoles.Patches {
                 textRenderer.color = Jackal.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.MiniLose) {
-                textRenderer.text = "你们怎么可以伤害小孩";
+                textRenderer.text = "他还只是个孩子啊";
                 textRenderer.color = Mini.color;
             }
 
             foreach (WinCondition cond in AdditionalTempData.additionalWinConditions) {
                 if (cond == WinCondition.AdditionalLawyerBonusWin) {
-                    textRenderer.text += $"\n{Helpers.cs(Lawyer.color, "律师和客户一同胜利")}";
+                    textRenderer.text += $"\n{Helpers.cs(Lawyer.color, "律师和客户胜利")}";
                 } else if (cond == WinCondition.AdditionalAlivePursuerWin) {
                     textRenderer.text += $"\n{Helpers.cs(Pursuer.color, "起诉人活了下来")}";
                 }
@@ -320,7 +320,7 @@ namespace TheOtherRoles.Patches {
                 roleSummary.transform.localScale = new Vector3(1f, 1f, 1f);
 
                 var roleSummaryText = new StringBuilder();
-                roleSummaryText.AppendLine("游戏结束时的玩家职业:");
+                roleSummaryText.AppendLine("玩家和角色列表:");
                 foreach(var data in AdditionalTempData.playerRoles) {
                     var roles = string.Join(" ", data.Roles.Select(x => Helpers.cs(x.color, x.name)));
                     var taskInfo = data.TasksTotal > 0 ? $" - <color=#FAD934FF>({data.TasksCompleted}/{data.TasksTotal})</color>" : "";
