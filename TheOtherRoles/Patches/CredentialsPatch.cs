@@ -7,13 +7,13 @@ namespace TheOtherRoles.Patches {
     [HarmonyPatch]
     public static class CredentialsPatch {
         public static string fullCredentials =
-$@"<size=130%><color=#ff351f>超多职业原版</color></size> {TheOtherRolesPlugin.Version.ToString()} <color=#1a75ff>兰博玩对战(内测)本地帽子</color>";
+$@"<size=130%><color=#ff351f>超多职业</color></size> v{TheOtherRolesPlugin.Version.ToString()}";
 
     public static string mainMenuCredentials =
-$@"本Mod由 <color=#FCCE03FF>Eisbison</color>, <color=#FCCE03FF>Thunderstorm584</color>, <color=#FCCE03FF>EndOfFile</color> & <color=#FCCE03FF>Mallöris</color> 制作";
+$@"<size=70%>模组作者:<color=#FCCE03FF>Eisbison</color>, <color=#FCCE03FF>Thunderstorm584</color>, <color=#FCCE03FF>EndOfFile</color> & <color=#FCCE03FF>Mallöris</color>\r\n艺术设计:<color=#FCCE03FF>Bavari</color>\n<color=#FF0000>四个憨批汉化组</color>汉化制作";
 
         public static string contributorsCredentials =
-$@"<size=60%> <color=#FCCE03FF>感谢 K3ndo & Smeggy 感谢 四个憨批汉化组</color></size>";
+$@"<size=60%> <color=#FCCE03FF>鸣谢: K3ndo & Smeggy</color> \r\nGitHub贡献:  Gendelo, Alex2911, amsyarasyiq, MaximeGillot, Psynomit, probablyadnf</size>";
 
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
@@ -35,24 +35,24 @@ $@"<size=60%> <color=#FCCE03FF>感谢 K3ndo & Smeggy 感谢 四个憨批汉化�
         [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
         internal static class PingTrackerPatch
         {
-//            public static GameObject modStamp;
-//            static void Prefix(PingTracker __instance) {
-//                if (modStamp == null) {
-//                    modStamp = new GameObject("ModStamp");
-//                    var rend = modStamp.AddComponent<SpriteRenderer>();
-//                    rend.sprite = TheOtherRolesPlugin.GetModStamp();
-//                    rend.color = new Color(1, 1, 1, 0.5f);
-//                    modStamp.transform.parent = __instance.transform.parent;
-//                    modStamp.transform.localScale *= 0.6f;
-//                }
-//                float offset = (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) ? 0.75f : 0f;
-//                modStamp.transform.position = FastDestroyableSingleton<HudManager>.Instance.MapButton.transform.position + Vector3.down * offset;
-//            }
+            public static GameObject modStamp;
+            static void Prefix(PingTracker __instance) {
+                if (modStamp == null) {
+                    modStamp = new GameObject("ModStamp");
+                    var rend = modStamp.AddComponent<SpriteRenderer>();
+                    rend.sprite = TheOtherRolesPlugin.GetModStamp();
+                    rend.color = new Color(1, 1, 1, 0.5f);
+                    modStamp.transform.parent = __instance.transform.parent;
+                    modStamp.transform.localScale *= 0.6f;
+                }
+                float offset = (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) ? 0.75f : 0f;
+                modStamp.transform.position = FastDestroyableSingleton<HudManager>.Instance.MapButton.transform.position + Vector3.down * offset;
+            }
 
             static void Postfix(PingTracker __instance){
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) {
-                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业原版</color></size> v{TheOtherRolesPlugin.Version.ToString()}\n<color=#1a75ff>兰博玩对战(内测)本地帽子</color>\n" + __instance.text.text;
+                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业</color></size> v{TheOtherRolesPlugin.Version.ToString()}\n" + __instance.text.text;
                     if (PlayerControl.LocalPlayer.Data.IsDead || (!(PlayerControl.LocalPlayer == null) && (PlayerControl.LocalPlayer == Lovers.lover1 || PlayerControl.LocalPlayer == Lovers.lover2))) {
                         __instance.transform.localPosition = new Vector3(3.45f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     } else {
