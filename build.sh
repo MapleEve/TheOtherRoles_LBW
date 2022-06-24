@@ -7,6 +7,7 @@ mkdir -p output
 dotnet build -c Release \
     -p:OutputPath=../output/without-submerged/
 
-dotnet build -c Release \
-    -p:DefineConstants=SUBMERGED \
-    -p:OutputPath=../output/with-submerged/
+# 不编译潜水艇
+# dotnet build -c Release \
+#     -p:DefineConstants=SUBMERGED \
+#     -p:OutputPath=../output/with-submerged/

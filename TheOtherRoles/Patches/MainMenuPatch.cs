@@ -22,16 +22,16 @@ namespace TheOtherRoles.Modules {
 
             var textDiscord = buttonDiscord.transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
             __instance.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) => {
-                textDiscord.SetText("Discord");
+                textDiscord.SetText("兰博玩");
             })));
 
             PassiveButton passiveButtonDiscord = buttonDiscord.GetComponent<PassiveButton>();
             SpriteRenderer buttonSpriteDiscord = buttonDiscord.GetComponent<SpriteRenderer>();
 
             passiveButtonDiscord.OnClick = new Button.ButtonClickedEvent();
-            passiveButtonDiscord.OnClick.AddListener((System.Action)(() => Application.OpenURL("https://discord.gg/77RkMJHWsM")));
+            passiveButtonDiscord.OnClick.AddListener((System.Action)(() => Application.OpenURL("https://ramboplay.com")));
 
-            Color discordColor = new Color32(88, 101, 242, byte.MaxValue);
+            Color discordColor = new Color32(59, 116, 213, byte.MaxValue);
             buttonSpriteDiscord.color = textDiscord.color = discordColor;
             passiveButtonDiscord.OnMouseOut.AddListener((System.Action)delegate {
                 buttonSpriteDiscord.color = textDiscord.color = discordColor;

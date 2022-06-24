@@ -8,7 +8,7 @@ namespace TheOtherRoles.Patches {
     [HarmonyPatch]
     public static class CredentialsPatch {
         public static string fullCredentials =
-$@"<size=130%><color=#ff351f>超多职业原版</color></size> {TheOtherRolesPlugin.Version.ToString()} <color=#1a75ff>兰博玩对战(内测)本地帽子</color>";
+$@"<size=130%><color=#ff351f>超多职业</color></size> {TheOtherRolesPlugin.Version.ToString()} <color=#1a75ff>兰博玩对战(内测)本地帽子</color>";
 
     public static string mainMenuCredentials =
 $@"本Mod由 <color=#FCCE03FF>Eisbison</color>, <color=#FCCE03FF>Thunderstorm584</color>, <color=#FCCE03FF>EndOfFile</color> & <color=#FCCE03FF>Mallöris</color> 制作";
@@ -38,31 +38,32 @@ $@"<size=60%> <color=#FCCE03FF>感谢 K3ndo & Smeggy 感谢 四个憨批汉化�
         [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
         internal static class PingTrackerPatch
         {
-            public static GameObject modStamp;
-            static void Prefix(PingTracker __instance) {
-                if (modStamp == null) {
-                    modStamp = new GameObject("ModStamp");
-                    var rend = modStamp.AddComponent<SpriteRenderer>();
-                    rend.sprite = TheOtherRolesPlugin.GetModStamp();
-                    rend.color = new Color(1, 1, 1, 0.5f);
-                    modStamp.transform.parent = __instance.transform.parent;
-                    modStamp.transform.localScale *= SubmergedCompatibility.Loaded ? 0 : 0.6f;
-                }
-                float offset = (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) ? 0.75f : 0f;
-                modStamp.transform.position = FastDestroyableSingleton<HudManager>.Instance.MapButton.transform.position + Vector3.down * offset;
-            }
+            // ModStamp 还是没修好
+            // public static GameObject modStamp;
+            // static void Prefix(PingTracker __instance) {
+            //     if (modStamp == null) {
+            //         modStamp = new GameObject("ModStamp");
+            //         var rend = modStamp.AddComponent<SpriteRenderer>();
+            //         rend.sprite = TheOtherRolesPlugin.GetModStamp();
+            //         rend.color = new Color(1, 1, 1, 0.5f);
+            //         modStamp.transform.parent = __instance.transform.parent;
+            //         modStamp.transform.localScale *= SubmergedCompatibility.Loaded ? 0 : 0.6f;
+            //     }
+            //     float offset = (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) ? 0.75f : 0f;
+            //     modStamp.transform.position = FastDestroyableSingleton<HudManager>.Instance.MapButton.transform.position + Vector3.down * offset;
+            // }
 
             static void Postfix(PingTracker __instance){
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) {
-                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业原版</color></size> v{TheOtherRolesPlugin.Version.ToString()}\n<color=#1a75ff>兰博玩对战(内测)本地帽子</color>\n" + __instance.text.text;
+                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业</color></size> {TheOtherRolesPlugin.Version.ToString()}\n<color=#1a75ff>兰博玩对战(内测)本地帽子</color>\n" +  $"延迟：{AmongUsClient.Instance.Ping}毫秒\n";
                     if (CachedPlayer.LocalPlayer.Data.IsDead || (!(CachedPlayer.LocalPlayer.PlayerControl == null) && (CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover1 || CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover2))) {
                         __instance.transform.localPosition = new Vector3(3.45f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     } else {
                         __instance.transform.localPosition = new Vector3(4.2f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     }
                 } else {
-                    __instance.text.text = $"{fullCredentials}\n{__instance.text.text}";
+                    __instance.text.text = $"{fullCredentials}\n" + $"延迟：{AmongUsClient.Instance.Ping}毫秒\n";
                     __instance.transform.localPosition = new Vector3(3.5f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                 }
             }
