@@ -20,7 +20,7 @@ namespace TheOtherRoles.Modules {
                                 handled = true;
                                 if (!Int32.TryParse(text.Substring(6), out LobbyLimit)) {
 
-                                    __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "²»ÕıÈ·µÄ·¿¼ä´óĞ¡\nÇëÊ¹ÓÃ: /size {amount}");
+                                    __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "ä¸æ­£ç¡®çš„æˆ¿é—´å¤§å°\nè¯·ä½¿ç”¨: /size {amount}");
                                 } else {
                                     LobbyLimit = Math.Clamp(LobbyLimit, 4, 15);
                                     if (LobbyLimit != PlayerControl.GameOptions.MaxPlayers) {
@@ -28,10 +28,10 @@ namespace TheOtherRoles.Modules {
                                         FastDestroyableSingleton<GameStartManager>.Instance.LastPlayerCount = LobbyLimit;
 
                                         CachedPlayer.LocalPlayer.PlayerControl.RpcSyncSettings(PlayerControl.GameOptions);
-                                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"·¿¼ä´óĞ¡¸Ä±ä³ÉÁË{LobbyLimit}Î»Íæ¼Ò");
+                                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"æˆ¿é—´å¤§å°æ”¹å˜æˆäº†{LobbyLimit}ä½ç©å®¶");
                                     } else {
 
-                                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"·¿¼ä´óĞ¡ÒÑ¾­ÊÇ{LobbyLimit}ÁË");
+                                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"æˆ¿é—´å¤§å°å·²ç»æ˜¯{LobbyLimit}äº†");
                                     }
                                 }
                             }

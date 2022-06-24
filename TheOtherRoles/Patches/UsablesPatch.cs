@@ -213,12 +213,12 @@ namespace TheOtherRoles.Patches {
             // Deactivate emergency button for Swapper
             if (Swapper.swapper != null && Swapper.swapper == CachedPlayer.LocalPlayer.PlayerControl && !Swapper.canCallEmergency) {
                 roleCanCallEmergency = false;
-                statusText = "½»»»Ê¦ÎÞ·¨·¢Æð½ô¼±»áÒé";
+                statusText = "äº¤æ¢å¸ˆæ— æ³•å‘èµ·ç´§æ€¥ä¼šè®®";
             }
             // Potentially deactivate emergency button for Jester
             if (Jester.jester != null && Jester.jester == CachedPlayer.LocalPlayer.PlayerControl && !Jester.canCallEmergency) {
                 roleCanCallEmergency = false;
-                statusText = "Ð¡³óÎÞ·¨·¢Æð½ô¼±»áÒé";
+                statusText = "å°ä¸‘æ— æ³•å‘èµ·ç´§æ€¥ä¼šè®®";
             }
 
             if (!roleCanCallEmergency) {
@@ -235,7 +235,7 @@ namespace TheOtherRoles.Patches {
                 int localRemaining = CachedPlayer.LocalPlayer.PlayerControl.RemainingEmergencies;
                 int teamRemaining = Mathf.Max(0, maxNumberOfMeetings - meetingsCount);
                 int remaining = Mathf.Min(localRemaining, (Mayor.mayor != null && Mayor.mayor == CachedPlayer.LocalPlayer.PlayerControl) ? 1 : teamRemaining);
-                __instance.NumberText.text = $"{localRemaining.ToString()} ´¬ÉÏ»¹ÓÐ {teamRemaining.ToString()} ´Î»áÒé¿ÉÕÙ¿ª";
+                __instance.NumberText.text = $"{localRemaining.ToString()} èˆ¹ä¸Šè¿˜æœ‰ {teamRemaining.ToString()} æ¬¡ä¼šè®®å¯å¬å¼€";
                 __instance.ButtonActive = remaining > 0;
                 __instance.ClosedLid.gameObject.SetActive(!__instance.ButtonActive);
                 __instance.OpenLid.gameObject.SetActive(__instance.ButtonActive);

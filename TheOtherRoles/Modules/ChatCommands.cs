@@ -47,12 +47,12 @@ namespace TheOtherRoles.Modules {
                         handled = true;
                         int col;
                         if (!Int32.TryParse(text.Substring(7), out col)) {
-                            __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "ÎŞ·¨½âÎöÑÕÉ«id\nÇëÊäÈë: /color {id}");
+                            __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "æ— æ³•è§£æé¢œè‰²id\nè¯·è¾“å…¥: /color {id}");
                         }
                         col = Math.Clamp(col, 0, Palette.PlayerColors.Length - 1);
 
                         CachedPlayer.LocalPlayer.PlayerControl.SetColor(col);
-                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "³É¹¦¸Ä±äÑÕÉ«");;
+                        __instance.AddChat(CachedPlayer.LocalPlayer.PlayerControl, "æˆåŠŸæ”¹å˜é¢œè‰²");;
                     } 
                 }
 

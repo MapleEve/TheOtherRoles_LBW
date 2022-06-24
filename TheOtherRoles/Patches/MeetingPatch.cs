@@ -228,13 +228,13 @@ namespace TheOtherRoles.Patches {
                 } else {
                     selections[i] = true;
                     renderer.color = Color.yellow;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "»∑»œªª∆±");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "Á°ÆËÆ§Êç¢Á•®");
                 }
             } else if (selectedCount == 2) {
                 if (selections[i]) {
                     renderer.color = Color.red;
                     selections[i] = false;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "»∑»œªª∆±");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "Á°ÆËÆ§Êç¢Á•®");
                 }
             }
         }
@@ -267,9 +267,9 @@ namespace TheOtherRoles.Patches {
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
 
                 RPCProcedure.swapperSwap((byte)firstPlayer.TargetPlayerId, (byte)secondPlayer.TargetPlayerId);
-                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "ªª∆±÷–!");
+                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "Êç¢Á•®‰∏≠!");
                 Swapper.charges--;
-                swapperChargesText.text = $" £”‡ªª∆±¥Œ ˝: {Swapper.charges}";
+                swapperChargesText.text = $"Ââ©‰ΩôÊç¢Á•®Ê¨°Êï∞: {Swapper.charges}";
             }
         }
 
@@ -535,8 +535,8 @@ namespace TheOtherRoles.Patches {
                 if (Portalmaker.portalmaker != null && CachedPlayer.LocalPlayer.PlayerControl == Portalmaker.portalmaker && !CachedPlayer.LocalPlayer.Data.IsDead) {
                     foreach (var entry in Portal.teleportedPlayers) {
                         float timeBeforeMeeting = ((float)(DateTime.UtcNow - entry.time).TotalMilliseconds) / 1000;
-                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}√Î “‘«∞: " : "";
-                        msg = msg + $"{entry.name}  π”√¡À¥´ÀÕ√≈";
+                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}Áßí ‰ª•Ââç: " : "";
+                        msg = msg + $"{entry.name} ‰ΩøÁî®‰∫Ü‰º†ÈÄÅÈó®";
                         FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"{msg}");
                     }
                 }
